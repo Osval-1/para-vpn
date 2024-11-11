@@ -3,7 +3,6 @@ import { typography } from "@/styles/typography";
 
 export const styles = StyleSheet.create({
   serverContainer: {
-    marginTop: 10,
     gap: 16,
   },
   headerContainer: {
@@ -20,5 +19,10 @@ export const styles = StyleSheet.create({
   header2: {
     ...typography.h2,
     color: "#fff",
+  },
+  imageStyle: {
+    width: "100%",
+    height: 130,
+    borderRadius:10
   },
 });

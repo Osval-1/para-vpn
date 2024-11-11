@@ -30,6 +30,7 @@ const Server = () => {
               size={item}
               strength={networkStrength}
               weak={weakNetwork}
+              key={index}
             />
           );
         })}

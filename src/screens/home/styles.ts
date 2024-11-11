@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor:"#001336",
-    paddingVertical:10
+    paddingVertical:10,
+    
   },
   headerText: {
     ...typography.h1,

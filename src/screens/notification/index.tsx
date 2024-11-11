@@ -6,7 +6,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Notification = () => {
   return (
     <SafeAreaView style={globalStyles.container}>
-      <Text>Notification</Text>
     </SafeAreaView>
   );
 };

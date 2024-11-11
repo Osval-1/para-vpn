@@ -11,10 +11,10 @@ import Server from "@/components/server";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/types/screens";
 
-type SplashScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
 
 
-const Home = ({navigation}:SplashScreenProps) => {
+const Home = ({navigation}:HomeScreenProps) => {
   const handleNavigation = ()=>{
     navigation.navigate("Servers")
   }
