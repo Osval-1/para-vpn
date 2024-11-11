@@ -1,2 +1,7 @@
 node_modules/
 .expo
+.eslintrc.js
+.eslintrc.js
+ios/
+android/
+*.config.js
