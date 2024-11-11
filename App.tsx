@@ -4,34 +4,69 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme } from "react-native";
 import react, { useState, useEffect, useCallback } from "react";
 import { Platform } from 'react-native';
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from './src/screens/home';
 import Splash from './src/screens/splash';
 import Servers from './src/screens/servers';
+import { RootStackParamList } from './src/types/screens';
 
-export type RootStackParamList = {
-  Splash: undefined;
-  Home: undefined;
-  Servers: undefined;
-};
+
+let darkTheme: any;
+SplashScreen.preventAutoHideAsync();
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Pre-load fonts, make any API calls you need to do here
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        if (!fontsLoaded) return;
+        // Artificially delay for two seconds to simulate a slow loading
+        // experience. Please remove this if you copy and paste the code!
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Tell the application to render
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+  const colorScheme = useColorScheme();
+  const [fontsLoaded, fontError] = useFonts({
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+    // IcoMoon: require("./assets/fonts/icomoon.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) return null;
   return (
-    <NavigationContainer>
+    <NavigationContainer  onReady={onLayoutRootView}>
       <SafeAreaProvider>
+        <StatusBar style='light'/>
       <RootStack.Navigator>
+        <RootStack.Screen
+          name="Splash"
+          component={Splash}
+          options={{
+            animation: Platform.OS === "ios" ? "fade" : "simple_push",
+            headerShown: false,
+          }}/>
       <RootStack.Screen
         name="Home"
         component={Home}
-        options={{
-          animation: Platform.OS === "ios" ? "fade" : "simple_push",
-          headerShown: false,
-        }}/>
-      <RootStack.Screen
-        name="Splash"
-        component={Splash}
         options={{
           animation: Platform.OS === "ios" ? "fade" : "simple_push",
           headerShown: false,

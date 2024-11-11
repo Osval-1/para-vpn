@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { styles } from './styles'
 
 const Servers = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Servers</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 
