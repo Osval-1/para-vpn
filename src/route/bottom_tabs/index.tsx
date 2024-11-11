@@ -6,6 +6,8 @@ import { Icon } from "@/components/icon";
 import Home from "@/screens/home";
 import Servers from "@/screens/servers";
 import { styles } from "./styles";
+import Settings from "@/screens/settings";
+import Notification from "@/screens/notification";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -15,13 +17,10 @@ const BottomTabs = () => {
       <Tab.Navigator
         screenOptions={{
           tabBarLabel: "",
-          tabBarStyle: styles.containerStyle,
+          tabBarStyle: styles.container,
           headerShown: false,
           tabBarActiveTintColor: "#007AFF",
           tabBarInactiveTintColor: "gray",
-          // tabBarBackground: () => (
-
-          // ),
         }}>
         <Tab.Screen
           name="Home"
@@ -30,16 +29,9 @@ const BottomTabs = () => {
             tabBarIcon: ({ focused }) => {
               return (
                 <Icon
-                  name="dashboard-fill-1"
+                  name="home-2"
                   size={24}
-                  color={focused ? "#3FBDF1" : "#9B9B9B"}
-                  style={{
-                    backgroundColor: focused
-                      ? "rgba(63, 189, 241,0.2)"
-                      : "#fff",
-                    padding: 10,
-                    borderRadius: 14,
-                  }}
+                  color={focused ? "#fff" : "#9B9B9B"}
                 />
               );
             },
@@ -52,16 +44,39 @@ const BottomTabs = () => {
             tabBarIcon: ({ focused }) => {
               return (
                 <Icon
-                  name="dashboard-fill-1"
+                  name="archive"
                   size={24}
-                  color={focused ? "#3FBDF1" : "#9B9B9B"}
-                  style={{
-                    backgroundColor: focused
-                      ? "rgba(63, 189, 241,0.2)"
-                      : "#fff",
-                    padding: 10,
-                    borderRadius: 14,
-                  }}
+                  color={focused ? "#fff" : "#9B9B9B"}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <Icon
+                  name="setting-2"
+                  size={24}
+                  color={focused ? "#fff" : "#9B9B9B"}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Notification"
+          component={Notification}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <Icon
+                  name="notification-bing"
+                  size={24}
+                  color={focused ? "#fff" : "#9B9B9B"}
                 />
               );
             },

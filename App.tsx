@@ -11,6 +11,7 @@ import Home from "@/screens/home";
 import Splash from "@/screens/splash";
 import Servers from "@/screens/servers";
 import { RootStackParamList } from "@/types/screens";
+import BottomTabs from "@/route/bottom_tabs";
 
 let darkTheme: any;
 SplashScreen.preventAutoHideAsync();
@@ -59,6 +60,14 @@ export default function App() {
           <RootStack.Screen
             name="Splash"
             component={Splash}
+            options={{
+              animation: Platform.OS === "ios" ? "fade" : "simple_push",
+              headerShown: false,
+            }}
+          />
+          <RootStack.Screen
+            name="BottomTabs"
+            component={BottomTabs}
             options={{
               animation: Platform.OS === "ios" ? "fade" : "simple_push",
               headerShown: false,

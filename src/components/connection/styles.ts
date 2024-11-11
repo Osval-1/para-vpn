@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     padding:8,
     flexDirection:"row",
     alignItems:"center",
-    justifyContent:"space-between",
+    justifyContent:"center",
   },
   speedLabel:{
     ...typography.body,

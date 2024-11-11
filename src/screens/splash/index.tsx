@@ -7,11 +7,11 @@ import { images } from "../../assets";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/types/screens";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Splash">;
+type SplashScreenProps = NativeStackScreenProps<RootStackParamList, "Splash">;
 
-const Splash = ({ navigation }: Props) => {
+const Splash = ({ navigation }: SplashScreenProps) => {
   const handleButtonPress = () => {
-    navigation.navigate("Home");
+    navigation.navigate("BottomTabs");
   };
 
   return (

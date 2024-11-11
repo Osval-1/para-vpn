@@ -1,5 +1,8 @@
 export type RootStackParamList = {
-    Splash: undefined;
-    Home: undefined;
-    Servers: undefined;
-  };
+  Home: undefined;
+  Splash: undefined;
+  Servers: undefined;
+  BottomTabs: undefined;
+  Notification: undefined;
+  Settings: indefined;
+};
