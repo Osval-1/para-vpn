@@ -1,4 +1,11 @@
-import { Text, View, ScrollView, Pressable, Image } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
@@ -17,9 +24,10 @@ const Servers = ({ navigation }: ServersScreenProps) => {
   const handleNavigation = () => {
     navigation.goBack();
   };
-  const { data } = useQuery({
+  const { isLoading, data } = useQuery({
     queryFn: getServer,
     queryKey: ["get_servers"],
+    // refetchInterval:3000
   });
 
   return (
@@ -41,15 +49,36 @@ const Servers = ({ navigation }: ServersScreenProps) => {
         </>
         <View style={styles.serverContainer}>
           <Text style={styles.header2}>Fastest Servers</Text>
-          {/* <Server /> */}
-          {/* <Server /> */}
+          {data &&
+            data.servers.map((server: ServerType, index:number) => {
+              if (index < 2) return;
+              return (
+                <Server
+                  key={server._id}
+                  name={server.country}
+                  serverImage={server.countryImage}
+                  strength={server.strength}
+                  onpress={() => console.log("server")}
+                />
+              );
+            })}
         </View>
         <View>
           <Image source={images.banner} style={styles.imageStyle} />
         </View>
         <View style={styles.serverContainer}>
           <Text style={styles.header2}>All Servers</Text>
-          {data && data.servers.map((server:ServerType)=><Server key={server._id} name={server.country} serverImage={server.countryImage}/>)}
+          {isLoading && <ActivityIndicator size="large" color="#fff" />}
+          {data &&
+            data.servers.map((server: ServerType) => (
+              <Server
+                key={server._id}
+                name={server.country}
+                serverImage={server.countryImage}
+                strength={server.strength}
+                onpress={() => console.log("server")}
+              />
+            ))}
         </View>
       </ScrollView>
     </SafeAreaView>

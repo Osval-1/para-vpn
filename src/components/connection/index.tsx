@@ -5,7 +5,7 @@ import { styles } from "./styles";
 
 type ConnectionProps = {
   iconName: string;
-  speed: string;
+  speed: number|undefined;
   color: string;
 };
 
@@ -13,7 +13,7 @@ const Connection = ({ iconName, speed, color }: ConnectionProps) => {
   return (
     <View style={styles.container}>
       <Icon name={iconName} size={24} color={color} />
-      <Text style={styles.speedLabel}>{speed}</Text>
+      <Text style={styles.speedLabel}>{`${speed}M/S`}</Text>
     </View>
   );
 };
