@@ -3,6 +3,7 @@ import React from "react";
 import { styles } from "./styles";
 import { images } from "@/assets";
 import Network from "../network";
+import { uri } from "@/api/api";
 
 type ServerProps = {
   serverImage: string;
@@ -13,13 +14,12 @@ type ServerProps = {
 const network = [1, 2, 3, 4, 5];
 const strengthArray = [1, 2, 3, 4];
 
-
-const Server = () => {
+const Server = ({ serverImage, name }: ServerProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.countryContainer}>
-        <Image source={images.canada} style={styles.imageStyle} />
-        <Text style={styles.serverName}>Nertherlands</Text>
+        <Image source={{ uri: `http://${uri}/${serverImage}` }} style={styles.imageStyle} />
+        <Text style={styles.serverName}>{name}</Text>
       </View>
       <View style={styles.networkContainer}>
         {network.map((item, index) => {

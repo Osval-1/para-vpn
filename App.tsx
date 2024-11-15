@@ -12,10 +12,12 @@ import Splash from "@/screens/splash";
 import Servers from "@/screens/servers";
 import { RootStackParamList } from "@/types/screens";
 import BottomTabs from "@/route/bottom_tabs";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 let darkTheme: any;
 SplashScreen.preventAutoHideAsync();
-
+const queryClient = new QueryClient()
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
@@ -54,43 +56,45 @@ export default function App() {
   if (!appIsReady) return null;
   return (
     <NavigationContainer onReady={onLayoutRootView}>
-      <SafeAreaProvider>
-        <StatusBar style="light" />
-        <RootStack.Navigator>
-          <RootStack.Screen
-            name="Splash"
-            component={Splash}
-            options={{
-              animation: Platform.OS === "ios" ? "fade" : "simple_push",
-              headerShown: false,
-            }}
-          />
-          <RootStack.Screen
-            name="BottomTabs"
-            component={BottomTabs}
-            options={{
-              animation: Platform.OS === "ios" ? "fade" : "simple_push",
-              headerShown: false,
-            }}
-          />
-          <RootStack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              animation: Platform.OS === "ios" ? "fade" : "simple_push",
-              headerShown: false,
-            }}
-          />
-          <RootStack.Screen
-            name="Servers"
-            component={Servers}
-            options={{
-              animation: Platform.OS === "ios" ? "fade" : "simple_push",
-              headerShown: false,
-            }}
-          />
-        </RootStack.Navigator>
-      </SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider>
+          <StatusBar style="light" />
+          <RootStack.Navigator>
+            <RootStack.Screen
+              name="Splash"
+              component={Splash}
+              options={{
+                animation: Platform.OS === "ios" ? "fade" : "simple_push",
+                headerShown: false,
+              }}
+            />
+            <RootStack.Screen
+              name="BottomTabs"
+              component={BottomTabs}
+              options={{
+                animation: Platform.OS === "ios" ? "fade" : "simple_push",
+                headerShown: false,
+              }}
+            />
+            <RootStack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                animation: Platform.OS === "ios" ? "fade" : "simple_push",
+                headerShown: false,
+              }}
+            />
+            <RootStack.Screen
+              name="Servers"
+              component={Servers}
+              options={{
+                animation: Platform.OS === "ios" ? "fade" : "simple_push",
+                headerShown: false,
+              }}
+            />
+          </RootStack.Navigator>
+        </SafeAreaProvider>
+      </QueryClientProvider>
     </NavigationContainer>
   );
 }
