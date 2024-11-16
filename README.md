@@ -3,7 +3,7 @@ Mobile android  client of the para vpn app
 
 ## To Run
 
-clone the project and install dependencies
+cCone the project and install dependencies
 
 ```
  git clone https://github.com/Osval-1/para-vpn.git
@@ -13,8 +13,9 @@ clone the project and install dependencies
  npm install
 
 ```
+Get the [Server](https://github.com/Osval-1/para-vpn-api.git) and follow the instructions to run
 
-then run
+Then run
 
 ```
 npm start
